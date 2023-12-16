@@ -44,7 +44,7 @@ public abstract class Entity : IEquatable<Entity>
     public static bool operator !=(Entity a, Entity b) => !(a == b);
 
     /// <inheritdoc />
-    public bool Equals(Entity other)
+    public bool Equals(Entity? other)
     {
         if (other is null)
         {
@@ -55,7 +55,7 @@ public abstract class Entity : IEquatable<Entity>
     }
 
     /// <inheritdoc />
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj is null)
         {

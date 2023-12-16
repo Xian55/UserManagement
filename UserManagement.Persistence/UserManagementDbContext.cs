@@ -6,44 +6,43 @@ using UserManagement.Application.Abstractions.Data;
 using UserManagement.Domain.Primitives;
 using UserManagement.Domain.Primitives.Maybe;
 
-namespace UserManagement.Persistence
+namespace UserManagement.Persistence;
+
+public sealed class UserMangementDbContext : DbContext, IDbContext
 {
-    public sealed class UserMangementDbContext : DbContext, IDbContext
+    public UserMangementDbContext(DbContextOptions options) : base(options)
     {
-        public UserMangementDbContext(DbContextOptions options) : base(options)
+    }
+
+    public new DbSet<TEntity> Set<TEntity>()
+        where TEntity : Entity => base.Set<TEntity>();
+
+    public async Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(int id)
+        where TEntity : Entity
+    {
+        if (id <= 0)
         {
+            return Maybe<TEntity>.None;
         }
 
-        public new DbSet<TEntity> Set<TEntity>()
-            where TEntity : Entity => base.Set<TEntity>();
+        return await Set<TEntity>().FirstOrDefaultAsync(e => e.Id == id);
+    }
 
-        public async Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(int id)
-            where TEntity : Entity
-        {
-            if (id <= 0)
-            {
-                return Maybe<TEntity>.None;
-            }
+    public void Insert<TEntity>(TEntity entity)
+        where TEntity : Entity => Set<TEntity>().Add(entity);
 
-            return await Set<TEntity>().FirstOrDefaultAsync(e => e.Id == id);
-        }
+    public new void Remove<TEntity>(TEntity entity)
+        where TEntity : Entity => Set<TEntity>().Remove(entity);
 
-        public void Insert<TEntity>(TEntity entity)
-            where TEntity : Entity => Set<TEntity>().Add(entity);
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return await base.SaveChangesAsync(cancellationToken);
+    }
 
-        public new void Remove<TEntity>(TEntity entity)
-            where TEntity : Entity => Set<TEntity>().Remove(entity);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            return await base.SaveChangesAsync(cancellationToken);
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-            base.OnModelCreating(modelBuilder);
-        }
+        base.OnModelCreating(modelBuilder);
     }
 }

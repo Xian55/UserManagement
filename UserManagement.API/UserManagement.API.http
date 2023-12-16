@@ -1,6 +1,57 @@
-@UserManagement.API_HostAddress = http://localhost:5053
+@protocol=https
+@hostname=localhost
+@port=7159
+@endpoint=api/users
 
-GET {{UserManagement.API_HostAddress}}/users/
+@url={{protocol}}://{{hostname}}:{{port}}/{{endpoint}}
+
+
+### Attemp to create new user -- invalid request
+POST {{url}}
+Content-Type: application/json
+
+{
+  "name": "string",
+  "username": "string",
+  "email": "string",
+  "address": {
+    "street": "string",
+    "suite": "string",
+    "city": "string",
+    "zipcode": "string",
+    "geo": {
+      "lat": "0",
+      "lng": "0"
+    }
+  },
+  "phone": "string",
+  "website": "string",
+  "company": {
+    "name": "string",
+    "catchPhrase": "string",
+    "bs": "string"
+  }
+}
+
+
+### Get all users by email contains @. Get page 1 and pageSize 2
+GET {{url}}?email=%40&page=1&pageSize=2
 Accept: application/json
 
-###
+
+### Get UserById 1
+GET {{url}}/1
+Accept: application/json
+
+
+### Get UserById 2
+GET {{url}}/2
+Accept: application/json
+
+
+### Delete user by id 1
+DELETE {{url}}/1
+
+
+### Delete non existing user by id 0 -- invalid request
+DELETE {{url}}/0

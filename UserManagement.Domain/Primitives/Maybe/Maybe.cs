@@ -2,18 +2,18 @@
 
 public sealed class Maybe<T> : IEquatable<Maybe<T>>
 {
-    private readonly T _value;
+    private readonly T? _value;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Maybe{T}"/> class.
     /// </summary>
     /// <param name="value">The value.</param>
-    private Maybe(T value) => _value = value;
+    private Maybe(T? value) => _value = value;
 
     /// <summary>
     /// Gets the default instance.
     /// </summary>
-    public static Maybe<T> None => new(default);
+    public static Maybe<T> None => new(default!);
 
     /// <summary>
     /// Gets a value indicating whether or not the value exists.
@@ -29,20 +29,20 @@ public sealed class Maybe<T> : IEquatable<Maybe<T>>
     /// Gets the value.
     /// </summary>
     public T Value => HasValue
-        ? _value
+        ? _value!
         : throw new InvalidOperationException("The value can not be accessed because it does not exist.");
 
-    public static implicit operator Maybe<T>(T value) => From(value);
+    public static implicit operator Maybe<T>(T? value) => From(value);
 
     /// <summary>
     /// Creates a new <see cref="Maybe{T}"/> instance based on the specified value.
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns>The new <see cref="Maybe{T}"/> instance.</returns>
-    public static Maybe<T> From(T value) => new Maybe<T>(value);
+    public static Maybe<T> From(T? value) => new(value);
 
     /// <inheritdoc />
-    public bool Equals(Maybe<T> other)
+    public bool Equals(Maybe<T>? other)
     {
         if (other is null)
         {
@@ -59,11 +59,11 @@ public sealed class Maybe<T> : IEquatable<Maybe<T>>
             return false;
         }
 
-        return Value.Equals(other.Value);
+        return Value!.Equals(other.Value);
     }
 
     /// <inheritdoc />
-    public override bool Equals(object obj) =>
+    public override bool Equals(object? obj) =>
         obj switch
         {
             null => false,
@@ -73,5 +73,5 @@ public sealed class Maybe<T> : IEquatable<Maybe<T>>
         };
 
     /// <inheritdoc />
-    public override int GetHashCode() => HasValue ? Value.GetHashCode() : 0;
+    public override int GetHashCode() => HasValue ? Value!.GetHashCode() : 0;
 }

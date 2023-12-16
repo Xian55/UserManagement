@@ -2,6 +2,8 @@
 
 using MediatR;
 
+using ValidationException = UserManagement.Application.Exceptions.ValidationException;
+
 namespace UserManagement.Application.Behaviors;
 
 /// <summary>
