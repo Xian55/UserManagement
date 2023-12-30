@@ -13,10 +13,10 @@ public sealed class GetUserByIdQuery : IQuery<Maybe<UserResponse>>
     /// Initializes a new instance of the <see cref="GetUserByIdQuery"/> class.
     /// </summary>
     /// <param name="userId">The user identifier.</param>
-    public GetUserByIdQuery(int userId) => UserId = userId;
+    public GetUserByIdQuery(string userId) => UserId = userId;
 
     /// <summary>
     /// Gets the user identifier.
     /// </summary>
-    public int UserId { get; }
+    public string UserId { get; }
 }

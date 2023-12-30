@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using UserManagement.Application.Abstractions.Data;
 using UserManagement.Application.Abstractions.Messaging;
 using UserManagement.Application.Contracts.Users;
@@ -11,20 +12,20 @@ namespace UserManagement.Application.Core.users.Queries.GetuserById;
 /// <summary>
 /// Represents the <see cref="GetUserByIdQuery"/> handler.
 /// </summary>
-internal sealed class GetuserByIdQueryHandler : IQueryHandler<GetUserByIdQuery, Maybe<UserResponse>>
+internal sealed class GetUserByIdQueryHandler : IQueryHandler<GetUserByIdQuery, Maybe<UserResponse>>
 {
     private readonly IDbContext _dbContext;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetuserByIdQueryHandler"/> class.
+    /// Initializes a new instance of the <see cref="GetUserByIdQueryHandler"/> class.
     /// </summary>
     /// <param name="dbContext">The database context.</param>
-    public GetuserByIdQueryHandler(IDbContext dbContext) => _dbContext = dbContext;
+    public GetUserByIdQueryHandler(IDbContext dbContext) => _dbContext = dbContext;
 
     /// <inheritdoc />
     public async Task<Maybe<UserResponse>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
     {
-        if (request.UserId <= 0)
+        if (string.IsNullOrEmpty(request.UserId))
         {
             return Maybe<UserResponse>.None;
         }

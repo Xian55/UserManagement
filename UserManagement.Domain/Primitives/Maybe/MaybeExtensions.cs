@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace UserManagement.Domain.Primitives.Maybe;
+﻿namespace UserManagement.Domain.Primitives.Maybe;
 
 /// <summary>
 /// Contains extension methods for the maybe class.

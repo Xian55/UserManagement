@@ -17,45 +17,17 @@ public sealed class User : Entity
     public required Company Company { get; set; }
 
 
-    public Result UpdateInformation(
-        string? name, string? userName, string? email, Address? address,
-        string? phone, string? website, Company? company)
+    public Result Update(
+        string name, string userName, string email, Address address,
+        string phone, string website, Company company)
     {
-        // TODO: validate
-        if (name is not null)
-        {
-            Name = name;
-        }
-
-        if (userName is not null)
-        {
-            Username = userName;
-        }
-
-        if (email is not null)
-        {
-            Email = email;
-        }
-
-        if (address is not null)
-        {
-            Address = address;
-        }
-
-        if (phone is not null)
-        {
-            Phone = phone;
-        }
-
-        if (website is not null)
-        {
-            Website = website;
-        }
-
-        if (company is not null)
-        {
-            Company = company;
-        }
+        Name = name;
+        Username = userName;
+        Email = email;
+        Address = address;
+        Phone = phone;
+        Website = website;
+        Company = company;
 
         return Result.Success();
     }

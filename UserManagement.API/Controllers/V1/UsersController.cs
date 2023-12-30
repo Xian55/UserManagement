@@ -16,11 +16,13 @@ using UserManagement.Domain.Core;
 using UserManagement.Domain.Primitives.Maybe;
 using UserManagement.Domain.Primitives.Result;
 
-namespace UserManagement.Api.Controllers;
+namespace UserManagement.API.Controllers.V1;
 
 /// <summary>
 /// Represents the users resource controller.
 /// </summary>
+[ApiVersion("1")]
+[Route("api/v1/")]
 public sealed class UsersController : ApiController
 {
     /// <summary>
@@ -65,7 +67,7 @@ public sealed class UsersController : ApiController
     [HttpPut(ApiRoutes.Users.UpdateUser)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> UpdateUser(int userId, [FromBody] UpdateUserRequest request) =>
+    public async Task<IActionResult> UpdateUser(string userId, [FromBody] UpdateUserRequest request) =>
         await Result.Create(request, Errors.UnProcessableRequest)
             .Map(value =>
                 new UpdateUserCommand
@@ -90,7 +92,7 @@ public sealed class UsersController : ApiController
     [HttpDelete(ApiRoutes.Users.RemoveUser)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> RemoveUser(int userId) =>
+    public async Task<IActionResult> RemoveUser(string userId) =>
         await Result.Success(new RemoveUserCommand(userId))
             .Bind(command => Sender.Send(command))
             .Match(NoContent, BadRequest);
@@ -103,7 +105,7 @@ public sealed class UsersController : ApiController
     [HttpGet(ApiRoutes.Users.GetUserById)]
     [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetUserById(int userId) =>
+    public async Task<IActionResult> GetUserById(string userId) =>
         await Maybe<GetUserByIdQuery>.From(new GetUserByIdQuery(userId))
             .Bind(command => Sender.Send(command))
             .Match(Ok, NotFound);

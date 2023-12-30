@@ -10,6 +10,7 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.HasKey(user => user.Id);
+        builder.Property(user => user.Id).ValueGeneratedOnAdd();
 
         builder.Property(user => user.Name).IsRequired();
         builder.Property(user => user.Username).IsRequired();

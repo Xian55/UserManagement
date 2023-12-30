@@ -17,10 +17,10 @@ public sealed class UserMangementDbContext : DbContext, IDbContext
     public new DbSet<TEntity> Set<TEntity>()
         where TEntity : Entity => base.Set<TEntity>();
 
-    public async Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(int id)
+    public async Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(string id)
         where TEntity : Entity
     {
-        if (id <= 0)
+        if (string.IsNullOrEmpty(id))
         {
             return Maybe<TEntity>.None;
         }
@@ -42,7 +42,6 @@ public sealed class UserMangementDbContext : DbContext, IDbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
         base.OnModelCreating(modelBuilder);
     }
 }

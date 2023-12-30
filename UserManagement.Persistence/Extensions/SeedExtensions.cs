@@ -19,7 +19,6 @@ public static class SeedExtensions
         }
 
         const string seedData = @"[{
-  ""id"": 1,
   ""name"": ""Leanne Graham"",
   ""username"": ""Bret"",
   ""email"": ""Sincere@april.biz"",
@@ -42,7 +41,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 2,
   ""name"": ""Ervin Howell"",
   ""username"": ""Antonette"",
   ""email"": ""Shanna@melissa.tv"",
@@ -65,7 +63,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 3,
   ""name"": ""Clementine Bauch"",
   ""username"": ""Samantha"",
   ""email"": ""Nathan@yesenia.net"",
@@ -88,7 +85,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 4,
   ""name"": ""Patricia Lebsack"",
   ""username"": ""Karianne"",
   ""email"": ""Julianne.OConner@kory.org"",
@@ -111,7 +107,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 5,
   ""name"": ""Chelsey Dietrich"",
   ""username"": ""Kamren"",
   ""email"": ""Lucio_Hettinger@annie.ca"",
@@ -134,7 +129,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 6,
   ""name"": ""Mrs. Dennis Schulist"",
   ""username"": ""Leopoldo_Corkery"",
   ""email"": ""Karley_Dach@jasper.info"",
@@ -157,7 +151,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 7,
   ""name"": ""Kurtis Weissnat"",
   ""username"": ""Elwyn.Skiles"",
   ""email"": ""Telly.Hoeger@billy.biz"",
@@ -180,7 +173,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 8,
   ""name"": ""Nicholas Runolfsdottir V"",
   ""username"": ""Maxime_Nienow"",
   ""email"": ""Sherwood@rosamond.me"",
@@ -203,7 +195,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 9,
   ""name"": ""Glenna Reichert"",
   ""username"": ""Delphine"",
   ""email"": ""Chaim_McDermott@dana.io"",
@@ -226,7 +217,6 @@ public static class SeedExtensions
   }
 },
 {
-  ""id"": 10,
   ""name"": ""Clementina DuBuque"",
   ""username"": ""Moriah.Stanton"",
   ""email"": ""Rey.Padberg@karina.biz"",
@@ -249,18 +239,11 @@ public static class SeedExtensions
   }
 }]";
 
-        try
+        var data = JsonSerializer.Deserialize<List<User>>(seedData, options);
+        if (data != null)
         {
-            var data = JsonSerializer.Deserialize<List<User>>(seedData, options);
-            if (data != null)
-            {
-                dbContext.AddRange(data);
-                dbContext.SaveChanges();
-            }
-        }
-        catch
-        {
-            // TODO: add logging
+            dbContext.AddRange(data);
+            dbContext.SaveChanges();
         }
     }
 }

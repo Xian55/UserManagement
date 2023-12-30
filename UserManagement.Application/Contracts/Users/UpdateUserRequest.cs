@@ -7,11 +7,11 @@ namespace UserManagement.Application.Contracts.Users;
 /// </summary>
 public sealed class UpdateUserRequest
 {
-    public string? Name { get; init; }
-    public string? Username { get; init; }
-    public string? Email { get; init; }
-    public Address? Address { get; init; }
-    public string? Phone { get; init; }
-    public string? Website { get; init; }
-    public Company? Company { get; init; }
+    public required string Name { get; init; }
+    public required string Username { get; init; }
+    public required string Email { get; init; }
+    public required Address Address { get; init; }
+    public required string Phone { get; init; }
+    public required string Website { get; init; }
+    public required Company Company { get; init; }
 }

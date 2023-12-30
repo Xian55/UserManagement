@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace UserManagement.Application.Contracts.Common;
+﻿namespace UserManagement.Application.Contracts.Common;
 
 /// <summary>
 /// Represents the paged list.

@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+
 using UserManagement.Domain.Primitives;
 
 namespace UserManagement.Application.Exceptions;

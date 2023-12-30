@@ -1,11 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using UserManagement.Application.Abstractions.Data;
+﻿using UserManagement.Application.Abstractions.Data;
 using UserManagement.Application.Abstractions.Messaging;
-using UserManagement.Application.Core.Users.Commands.RemoveUser;
 using UserManagement.Application.Validation;
 using UserManagement.Domain.Core;
-using UserManagement.Domain.Core.Errors;
 using UserManagement.Domain.Primitives.Maybe;
 using UserManagement.Domain.Primitives.Result;
 

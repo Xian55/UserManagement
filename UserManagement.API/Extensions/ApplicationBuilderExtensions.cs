@@ -37,7 +37,7 @@ internal static class ApplicationBuilderExtensions
 
         using UserMangementDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<UserMangementDbContext>();
 
-        dbContext.Database.EnsureCreated();
+        //dbContext.Database.EnsureCreated();
 
         JsonSerializerOptions options = serviceScope.ServiceProvider.GetRequiredService<JsonSerializerOptions>();
 

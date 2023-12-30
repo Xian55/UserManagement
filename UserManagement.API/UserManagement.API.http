@@ -1,7 +1,8 @@
 @protocol=https
 @hostname=localhost
 @port=7159
-@endpoint=api/users
+@version=v1
+@endpoint=api/{{version}}/users
 
 @url={{protocol}}://{{hostname}}:{{port}}/{{endpoint}}
 
@@ -13,7 +14,7 @@ Content-Type: application/json
 {
   "name": "string",
   "username": "string",
-  "email": "string",
+  "email": "test@string.com",
   "address": {
     "street": "string",
     "suite": "string",
@@ -25,7 +26,7 @@ Content-Type: application/json
     }
   },
   "phone": "string",
-  "website": "string",
+  "website": "www.string.com",
   "company": {
     "name": "string",
     "catchPhrase": "string",

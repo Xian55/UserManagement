@@ -11,7 +11,6 @@ namespace UserManagement.Api.Infrastructure;
 /// <summary>
 /// Represents the base API controller.
 /// </summary>
-[Route("api")]
 public class ApiController : ControllerBase
 {
     /// <summary>

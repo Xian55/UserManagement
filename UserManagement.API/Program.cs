@@ -1,8 +1,9 @@
+using Serilog;
+
 using UserManagement.API.Extensions;
 using UserManagement.Application;
-using UserManagement.Persistence;
 using UserManagement.Infrastructure;
-using Serilog;
+using UserManagement.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,12 @@ builder.Services
 
 builder.Services.AddControllers();
 
+builder.Services.AddApiVersioning();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(builder =>
+{
+    builder.SupportNonNullableReferenceTypes();
+});
 
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
@@ -37,7 +42,7 @@ app.UseSerilogRequestLogging();
 
 app.UseCustomExceptionHandler();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseRouting();
 

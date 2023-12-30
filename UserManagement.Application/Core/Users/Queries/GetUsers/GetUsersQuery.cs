@@ -14,7 +14,7 @@ public sealed class GetUsersQuery : IQuery<PagedList<UserResponse>>
 {
     private const int MaxPageSize = 50;
 
-    private const string DefaultOrderBy = $"{nameof(User.Company)}.{nameof(User.Company.Name)}";
+    private const string DefaultOrderBy = $"{nameof(User.Name)}";
 
     private static readonly Dictionary<string, string> ValidOrderByColumnsDictionary = new()
     {
@@ -30,7 +30,6 @@ public sealed class GetUsersQuery : IQuery<PagedList<UserResponse>>
         string? phone,
         string? website,
         Company? company,
-
         int page,
         int pageSize,
         string orderBy)
@@ -85,7 +84,7 @@ public sealed class GetUsersQuery : IQuery<PagedList<UserResponse>>
 
         string[] orderByParts = orderBy.Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-        var orderByStringBuilder = new StringBuilder();
+        StringBuilder orderByStringBuilder = new();
 
         foreach (string orderByPart in orderByParts)
         {

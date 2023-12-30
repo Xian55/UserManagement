@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UserManagement.Domain.Primitives.Result;
+﻿namespace UserManagement.Domain.Primitives.Result;
 
 /// <summary>
 /// Represents a result of some operation, with status information and possibly an error.

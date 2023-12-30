@@ -2,7 +2,6 @@
 using UserManagement.Application.Abstractions.Messaging;
 using UserManagement.Application.Validation;
 using UserManagement.Domain.Core;
-using UserManagement.Domain.Core.Errors;
 using UserManagement.Domain.Primitives.Maybe;
 using UserManagement.Domain.Primitives.Result;
 
@@ -32,13 +31,13 @@ internal sealed class UpdateUserCommandHandler : ICommandHandler<UpdateUserComma
 
         User user = maybeUser.Value;
 
-        Result updateInformationResult = user.UpdateInformation(
+        Result updatedResult = user.Update(
             request.Name, request.Username, request.Email, request.Address,
             request.Phone, request.Website, request.Company);
 
-        if (updateInformationResult.IsFailure)
+        if (updatedResult.IsFailure)
         {
-            return Result.Failure(updateInformationResult.Error);
+            return Result.Failure(updatedResult.Error);
         }
 
         await _dbContext.SaveChangesAsync(cancellationToken);

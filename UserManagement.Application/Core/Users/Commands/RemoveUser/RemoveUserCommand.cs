@@ -12,10 +12,10 @@ public sealed class RemoveUserCommand : ICommand<Result>
     /// Initializes a new instance of the <see cref="RemoveUserCommand"/> class.
     /// </summary>
     /// <param name="userId">The user identifier.</param>
-    public RemoveUserCommand(int userId) => UserId = userId;
+    public RemoveUserCommand(string userId) => UserId = userId;
 
     /// <summary>
     /// Gets the user identifier.
     /// </summary>
-    public int UserId { get; }
+    public string UserId { get; }
 }

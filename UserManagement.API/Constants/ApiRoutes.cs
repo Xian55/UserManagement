@@ -18,17 +18,17 @@ internal static class ApiRoutes
         /// <summary>
         /// The start user route.
         /// </summary>
-        internal const string UpdateUser = "users/{userId:int}";
+        internal const string UpdateUser = "users/{userId}";
 
         /// <summary>
         /// The remove user route.
         /// </summary>
-        internal const string RemoveUser = "users/{userId:int}";
+        internal const string RemoveUser = "users/{userId}";
 
         /// <summary>
         /// The get user by id route.
         /// </summary>
-        internal const string GetUserById = "users/{userId:int}";
+        internal const string GetUserById = "users/{userId}";
 
         /// <summary>
         /// The get users route.

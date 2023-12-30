@@ -1,5 +1,5 @@
-﻿using System;
-using FluentValidation;
+﻿using FluentValidation;
+
 using UserManagement.Domain.Primitives;
 
 namespace UserManagement.Application.Extensions;

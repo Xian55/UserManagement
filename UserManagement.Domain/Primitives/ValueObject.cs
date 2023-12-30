@@ -5,7 +5,7 @@
 /// </summary>
 public abstract class ValueObject : IEquatable<ValueObject>
 {
-    public static bool operator ==(ValueObject a, ValueObject b)
+    public static bool operator ==(ValueObject? a, ValueObject? b)
     {
         if (a is null && b is null)
         {
@@ -20,7 +20,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
         return a.Equals(b);
     }
 
-    public static bool operator !=(ValueObject a, ValueObject b) => !(a == b);
+    public static bool operator !=(ValueObject? a, ValueObject? b) => !(a == b);
 
     /// <inheritdoc />
     public bool Equals(ValueObject? other)

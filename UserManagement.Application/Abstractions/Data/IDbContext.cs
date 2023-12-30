@@ -21,7 +21,7 @@ public interface IDbContext
     /// <typeparam name="TEntity">The entity type.</typeparam>
     /// <param name="id">The entity identifier.</param>
     /// <returns>The maybe instance that may contain the <typeparamref name="TEntity"/> with the specified identifier.</returns>
-    Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(int id)
+    Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(string id)
         where TEntity : Entity;
 
     /// <summary>

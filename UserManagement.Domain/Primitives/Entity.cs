@@ -6,7 +6,7 @@ public abstract class Entity : IEquatable<Entity>
     /// Initializes a new instance of the <see cref="Entity"/> class.
     /// </summary>
     /// <param name="id">The entity identifier.</param>
-    protected Entity(int id)
+    protected Entity(string id)
     {
         Id = id;
     }
@@ -24,9 +24,9 @@ public abstract class Entity : IEquatable<Entity>
     /// <summary>
     /// Gets the entity identifier.
     /// </summary>
-    public int Id { get; private set; }
+    public string Id { get; set; } = null!;
 
-    public static bool operator ==(Entity a, Entity b)
+    public static bool operator ==(Entity? a, Entity? b)
     {
         if (a is null && b is null)
         {
@@ -41,7 +41,7 @@ public abstract class Entity : IEquatable<Entity>
         return a.Equals(b);
     }
 
-    public static bool operator !=(Entity a, Entity b) => !(a == b);
+    public static bool operator !=(Entity? a, Entity? b) => !(a == b);
 
     /// <inheritdoc />
     public bool Equals(Entity? other)

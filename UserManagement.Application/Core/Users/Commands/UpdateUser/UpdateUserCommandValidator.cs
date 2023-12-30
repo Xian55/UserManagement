@@ -15,7 +15,11 @@ public sealed class UpdateUserCommandValidator : AbstractValidator<UpdateUserCom
     /// </summary>
     public UpdateUserCommandValidator()
     {
-        // TODO: Add validation rules.
-        RuleFor(x => x.Email).NotEmpty().WithError(ValidationErrors.User.EmailIsRequired);
+        RuleFor(x => x.Email).EmailAddress().WithError(ValidationErrors.User.EmailIsInvalid);
+
+        RuleFor(x => x.Website)
+            .Must(uri => Uri.TryCreate(uri, UriKind.Relative, out _))
+            .When(x => !string.IsNullOrEmpty(x.Website))
+            .WithError(ValidationErrors.User.WebsiteIsRequired);
     }
 }

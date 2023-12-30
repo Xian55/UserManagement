@@ -14,5 +14,5 @@ public sealed class RemoveUserCommandValidator : AbstractValidator<RemoveUserCom
     /// Initializes a new instance of the <see cref="RemoveUserCommandValidator"/> class.
     /// </summary>
     public RemoveUserCommandValidator() =>
-        RuleFor(x => x.UserId).GreaterThan(0).WithError(ValidationErrors.User.IdentifierIsRequired);
+        RuleFor(x => x.UserId).NotEmpty().WithError(ValidationErrors.User.IdentifierIsRequired);
 }

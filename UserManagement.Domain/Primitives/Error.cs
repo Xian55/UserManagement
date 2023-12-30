@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace UserManagement.Domain.Primitives;
+﻿namespace UserManagement.Domain.Primitives;
 
 /// <summary>
 /// Represents a concrete domain error.
