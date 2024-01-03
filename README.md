@@ -8,17 +8,21 @@
 - [MongoDB Driver](https://github.com/mongodb/mongo-csharp-driver)
 - MongoDB with [EF Core Provider](https://github.com/mongodb/mongo-efcore-provider)
 - [Core Entity Framework 7.0](https://github.com/dotnet/efcore)
-- [Dapper](https://github.com/DapperLib/Dapper)
 - [Dynamic LINQ](https://github.com/zzzprojects/System.Linq.Dynamic.Core)
 - [MediatR](https://github.com/jbogard/MediatR)
 - [FluentValidation](https://github.com/FluentValidation/FluentValidation)
 - [Swagger](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
 - Containerization with Docker
 - Self hosted MongoDB
+- [xUnit](https://github.com/xunit/xunit)
+- [Moq](https://github.com/devlooped/moq)
+- [Moq.EntityFrameworkCore](https://github.com/MichalJankowskii/Moq.EntityFrameworkCore)
+- [FluentAssertion](https://github.com/fluentassertions/fluentassertions)
+- [Github workflow](https://resources.github.com/ci-cd/)
 
 ## Design Pattern
 
-- The API employs the Command Query Responsibility Segregation (CQRS) design pattern. This approach separates read and write operations for more efficient and scalable data handling, enhancing the system's overall performance and maintainability.
+- The API employs the Command Query Responsibility Segregation ([CQRS](https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs)) design pattern. This approach separates read and write operations for more efficient and scalable data handling, enhancing the system's overall performance and maintainability.
 
 ## Architectural Design of the System
 
@@ -45,7 +49,6 @@
 - Implementation using cutting-edge .NET7 framework.
 - Utilization of an NoSQL MongoDB database for efficient data handling.
 - Integration of Entity Framework Core 7.0 for robust database operations.
-- Dapper for simplified database interactions.
 - Dynamic LINQ for flexible query operations.
 - MediatR for effective mediation pattern implementation.
 - FluentValidation for advanced data validation.
