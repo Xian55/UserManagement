@@ -1,14 +1,7 @@
 name: .NET windows build
 
-on:
-  pull_request:
-    paths-ignore:
-      - '.github/*'
-      - '.github/ISSUE_TEMPLATE/**'
-      - 'README.md'
-      - '**.yml'
-      - '**.json'
-      
+on: [push]
+
 jobs:
   build:
 
