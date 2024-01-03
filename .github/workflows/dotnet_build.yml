@@ -16,6 +16,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore UserManagement.API
     - name: Build
-      run: dotnet build --no-restore UserManagement.sln
+      run: dotnet build --no-restore UserManagement.API
     - name: Test
-      run: dotnet test --no-build --verbosity normal UserManagement.Application.UnitTests
+      run: dotnet test --verbosity normal UserManagement.Application.UnitTests
