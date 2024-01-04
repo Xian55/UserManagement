@@ -59,6 +59,9 @@ internal sealed class GetUsersQueryHandler : IQueryHandler<GetUsersQuery, PagedL
             .Where(query)
             .CountAsync(cancellationToken);
 
+        if (totalCount == 0)
+            return PagedList<UserResponse>.Empty;
+
         List<UserResponse> userResponses = usersQuery.Result.Select(user => new UserResponse
         {
             Id = user.Id,

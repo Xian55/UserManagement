@@ -3,11 +3,10 @@
 using UserManagement.Application.Abstractions.Data;
 using UserManagement.Application.Abstractions.Messaging;
 using UserManagement.Application.Contracts.Users;
-using UserManagement.Application.Core.Users.Queries.GetUserById;
 using UserManagement.Domain.Core;
 using UserManagement.Domain.Primitives.Maybe;
 
-namespace UserManagement.Application.Core.users.Queries.GetuserById;
+namespace UserManagement.Application.Core.Users.Queries.GetUserById;
 
 /// <summary>
 /// Represents the <see cref="GetUserByIdQuery"/> handler.
