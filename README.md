@@ -63,3 +63,8 @@ docker compose build
 docker compose up -d
 docker compose down
 ```
+
+## Future improvements
+
+- Integrate [caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed?view=aspnetcore-7.0) solution
+- Integrate Heath Checks via [IHealthCheck](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.diagnostics.healthchecks.ihealthcheck?view=dotnet-plat-ext-8.0)
