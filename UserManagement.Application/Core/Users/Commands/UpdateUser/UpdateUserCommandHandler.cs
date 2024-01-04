@@ -29,6 +29,18 @@ internal sealed class UpdateUserCommandHandler : ICommandHandler<UpdateUserComma
             return Result.Failure(ValidationErrors.User.NotFound);
         }
 
+        bool userNameAlreadyTaken = _dbContext.Set<User>().Where(x => x.Username == request.Username).Any();
+        if (userNameAlreadyTaken)
+        {
+            return Result.Failure(Domain.Core.Errors.DomainErrors.User.UserNameMustBeUnique);
+        }
+
+        bool emailAlreadyTaken = _dbContext.Set<User>().Where(x => x.Email == request.Email).Any();
+        if (emailAlreadyTaken)
+        {
+            return Result.Failure(Domain.Core.Errors.DomainErrors.User.EmailMustBeUnique);
+        }
+
         User user = maybeUser.Value;
 
         Result updatedResult = user.Update(
