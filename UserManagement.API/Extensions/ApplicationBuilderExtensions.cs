@@ -35,7 +35,7 @@ internal static class ApplicationBuilderExtensions
     {
         using IServiceScope serviceScope = builder.ApplicationServices.CreateScope();
 
-        using UserMangementDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<UserMangementDbContext>();
+        using UserManagementDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<UserManagementDbContext>();
 
         //dbContext.Database.EnsureCreated();
 

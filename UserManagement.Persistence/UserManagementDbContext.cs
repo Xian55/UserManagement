@@ -8,9 +8,9 @@ using UserManagement.Domain.Primitives.Maybe;
 
 namespace UserManagement.Persistence;
 
-public sealed class UserMangementDbContext : DbContext, IDbContext
+public sealed class UserManagementDbContext : DbContext, IDbContext
 {
-    public UserMangementDbContext(DbContextOptions options) : base(options)
+    public UserManagementDbContext(DbContextOptions options) : base(options)
     {
     }
 

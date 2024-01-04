@@ -10,7 +10,7 @@ namespace UserManagement.Persistence.Extensions;
 public static class SeedExtensions
 {
     public static void SeedDatabase(
-        this UserMangementDbContext dbContext,
+        this UserManagementDbContext dbContext,
         JsonSerializerOptions options)
     {
         if (dbContext.Set<User>().Any())

@@ -24,8 +24,8 @@ public static class DependencyInjection
         _mongoClient = new MongoClient(connectionString);
         IMongoDatabase db = _mongoClient.GetDatabase("UserManagement");
 
-        services.AddDbContext<UserMangementDbContext>(options => options.UseMongoDB(_mongoClient, db.DatabaseNamespace.DatabaseName));
-        services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<UserMangementDbContext>());
+        services.AddDbContext<UserManagementDbContext>(options => options.UseMongoDB(_mongoClient, db.DatabaseNamespace.DatabaseName));
+        services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<UserManagementDbContext>());
         //services.AddSingleton<IDbConnection>(_ => db);
 
         return services;
